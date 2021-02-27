@@ -51,6 +51,9 @@
 		<module>zuul</module>
         <module>customers</module>
         <module>products</module>
+        <module>sellers</module>
+        <module>providers</module>
+        <module>payments</module>
     </modules>
 
 </project>
