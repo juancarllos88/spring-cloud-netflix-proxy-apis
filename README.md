@@ -10,6 +10,10 @@
 - ```cd spring-cloud-netflix-proxy-apis```
 - ```mvn clean package```
 
+## Iniciando ActiveMq
+
+- ```docker-compose up -d```
+
 ## Executando 
 
 Service Discovery (Eureka)
@@ -31,6 +35,7 @@ API de Products
 API de Payments
 - ```cd payments```
 - ```mvn spring-boot:run```
+- Envia os pagamentos para a fila: payments
 
 API de Providers
 - ```cd providers```
@@ -39,6 +44,13 @@ API de Providers
 API de Sellers
 - ```cd sellers```
 - ```mvn spring-boot:run```
+
+PaymentProcessor
+- ```cd payment-processor```
+- ```mvn spring-boot:run```
+- Processa os pagamentos através da fila: payments
+- Pagamentos autorizados vão para fila: authorized-payments
+- Pagamentos rejeitados vão para fila: rejected-payments
 
 
 Acessando Eureka: http://localhost:8761
@@ -52,6 +64,7 @@ PAYMENTS	n/a (1)	(1)	UP (1) - 192.168.11.247:payments:8020
 PROVIDERS	n/a (1)	(1)	UP (1) - 192.168.11.247:providers:8030
 SELLERS	n/a (1)	(1)	UP (1) - 192.168.11.247:sellers:8040
 ZUUL	      n/a (1)	(1)	UP (1) - 192.168.11.247:zuul:8080
+PAYMENTS-PROCESSOR	n/a (1)	(1)	UP (1) - 192.168.11.247:zuul:8010
 ````
 
 ## Acessando APIs
